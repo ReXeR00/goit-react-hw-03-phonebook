@@ -1,0 +1,31 @@
+.list {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    width: 400px;
+    padding: 12px;
+    border-radius: 4px;
+    background-color: rgba(0, 0, 0, 0.6);
+    border: 3px solid #010f3f;
+    list-style: none;
+  }
+  
+  .item {
+    background-color: #ffffff;
+    border: 3px solid #010f3f;
+    padding: 10px;
+    border-radius: 4px;
+    margin-bottom: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    font-size: 20px;
+  }
+  
+  .button {
+    padding: 4px 8px;
+    font: inherit;
+    cursor: pointer;
+    border-radius: 4px 8px;
+    border: 3px solid #010f3f;
+  }
