@@ -2,13 +2,14 @@
     width: 400px;
     padding: 10px;
     margin: 0 auto;
-      background-color: rgba(0, 0, 0, 0.5); /* Przykładowa wartość przezroczystego koloru czarnego */
+      background-color: rgba(0, 0, 0, 0.5); 
 
   }
   
   .wrapper {
     text-align: center;
     font-size: 20px;
+    color: rgba(255, 255, 255, 0.5);
   }
   
   .title {
@@ -18,4 +19,5 @@
   
   .subTitle {
     text-align: center;
+    color: rgba(255, 255, 255, 0.5);
   }
