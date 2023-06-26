@@ -4,6 +4,7 @@ import styles from './App.module.css';
 import ContactForm from './ContactForm/ContactForm';
 import ContactList from './ContactList/ContactList';
 import Filter from './Filter/Filter';
+import CanvasAnimation from './CanvasAnimation';
 
 class App extends Component {
   state = {
@@ -69,7 +70,9 @@ class App extends Component {
     const { filter } = this.state;
 
     return (
+      
       <div className={styles.container}>
+          <CanvasAnimation/>
         <h1 className={styles.title}>Phone Book</h1>
 
         <ContactForm onSubmit={this.addContact} />
