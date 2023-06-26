@@ -35,7 +35,7 @@ class App extends Component {
     );
 
     if (isInContacts) {
-      alert(`${contact.name} już istnieje w kontaktach`);
+      alert(`${contact.name} already exists in contacts.`);
       return;
     }
     this.setState(prevState => ({
@@ -70,16 +70,16 @@ class App extends Component {
 
     return (
       <div className={styles.container}>
-        <h1 className={styles.title}>Książka telefoniczna</h1>
+        <h1 className={styles.title}>Phone Book</h1>
 
         <ContactForm onSubmit={this.addContact} />
 
-        <h2 className={styles.subTitle}>Kontakty</h2>
+        <h2 className={styles.subTitle}>Contacts</h2>
         {this.state.contacts.length > 0 ? (
           <Filter value={filter} onChangeFilter={this.changeFilter} />
         ) : (
           <div className={styles.wrapper}>
-            Twoja książka telefoniczna jest pusta. Dodaj pierwszy kontakt!
+            Your phone book is empty. Add the first contact!
           </div>
         )}
         {this.state.contacts.length > 0 && (
