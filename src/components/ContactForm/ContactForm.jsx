@@ -1,73 +1,71 @@
-import {Component} from 'react';
+import { useState } from 'react';
 import PropTypes from 'prop-types';
 import { nanoid } from 'nanoid';
 import styles from './ContactForm.module.css';
 
-class ContactForm extends Component {
-  state = {
-    name: '',
-    number: '',
-  };
+const ContactForm = ({ onSubmit }) => {
+  const [name, setName] = useState('');
+  const [number, setNumber] = useState('');
 
-
-
-
-  nameInputId = nanoid();
-  numberInputId = nanoid();
-
-  handleSubmit = event => {
+  const handleSubmit = event => {
     event.preventDefault();
 
-    this.props.onSubmit({ name: this.state.name, number: this.state.number });
+    onSubmit({ name, number });
 
-    this.reset();
+    reset();
   };
 
-  handleChange = event => {
+  const handleChange = event => {
     const { name, value } = event.target;
-    this.setState({ [name]: value });
+    if (name === 'name') {
+      setName(value);
+    } else if (name === 'number') {
+      setNumber(value);
+    }
   };
 
-  reset = () => {
-    this.setState({ number: '', name: '' });
+  const reset = () => {
+    setName('');
+    setNumber('');
   };
 
-  render() {
-    return (
-      <form className={styles.form} onSubmit={this.handleSubmit}>
-        <label htmlFor={this.nameInputId} className={styles.label}>
-          Name
-          <input
-            className={styles.input}
-            type="text"
-            name="name"
-            value={this.state.name}
-            onChange={this.handleChange}
-            required
-          />
-        </label>
+  const nameInputId = nanoid();
+  const numberInputId = nanoid();
 
-        <label htmlFor={this.numberInputId} className={styles.label}>
-          Number
-          <input
-            className={styles.input}
-            type="tel"
-            name="number"
-            value={this.state.number}
-            onChange={this.handleChange}
-            pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
-            title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
-            required
-          />
-        </label>
+  return (
+    <form className={styles.form} onSubmit={handleSubmit}>
+      <label htmlFor={nameInputId} className={styles.label}>
+        Name
+        <input
+          className={styles.input}
+          type="text"
+          name="name"
+          value={name}
+          onChange={handleChange}
+          required
+        />
+      </label>
 
-        <button className={styles.button} type="submit">
-          Add contact
-        </button>
-      </form>
-    );
-  }
-}
+      <label htmlFor={numberInputId} className={styles.label}>
+        Number
+        <input
+          className={styles.input}
+          type="tel"
+          name="number"
+          value={number}
+          onChange={handleChange}
+          pattern="\+?\d{1,4}?[-.\s]?\(?\d{1,3}?\)?[-.\s]?\d{1,4}[-.\s]?\d{1,4}[-.\s]?\d{1,9}"
+          title="Phone number must be digits and can contain spaces, dashes, parentheses and can start with +"
+          required
+        />
+      </label>
+
+      <button className={styles.button} type="submit">
+        Add contact
+      </button>
+    </form>
+  );
+};
 
 ContactForm.propTypes = {
   onSubmit: PropTypes.func.isRequired,

@@ -17,10 +17,10 @@ class App extends Component {
     filter: '',
   };
 
-  componentDidMount(){
-    const storedContacts = localStorage.getItem('contacts')
-    if(storedContacts) {
-      this.setState({contacts: JSON.parse(storedContacts)})
+  componentDidMount() {
+    const storedContacts = localStorage.getItem('contacts');
+    if (storedContacts) {
+      this.setState({ contacts: JSON.parse(storedContacts) });
     }
   }
 
@@ -39,6 +39,7 @@ class App extends Component {
       alert(`${contact.name} already exists in contacts.`);
       return;
     }
+
     this.setState(prevState => ({
       contacts: [{ id: nanoid(), ...contact }, ...prevState.contacts],
     }));
@@ -58,11 +59,9 @@ class App extends Component {
   };
 
   removeContact = contactId => {
-    this.setState(prevState => {
-      return {
-        contacts: prevState.contacts.filter(({ id }) => id !== contactId),
-      };
-    });
+    this.setState(prevState => ({
+      contacts: prevState.contacts.filter(({ id }) => id !== contactId),
+    }));
   };
 
   render() {
@@ -70,9 +69,8 @@ class App extends Component {
     const { filter } = this.state;
 
     return (
-      
       <div className={styles.container}>
-          <CanvasAnimation/>
+        <CanvasAnimation />
         <h1 className={styles.title}>Phone Book</h1>
 
         <ContactForm onSubmit={this.addContact} />
