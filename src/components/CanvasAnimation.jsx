@@ -1,5 +1,4 @@
-
-import  { useEffect, useRef } from 'react';
+import React, { useEffect, useRef } from 'react';
 
 const CanvasAnimation = () => {
   const canvasRef = useRef(null);
@@ -62,7 +61,12 @@ const CanvasAnimation = () => {
     return () => window.removeEventListener('resize', handleResize);
   }, []);
 
-  return <canvas ref={canvasRef} style={{ position: 'fixed', top: 0, left: 0, zIndex: -1 }} />;
+  return (
+    <canvas
+      ref={canvasRef}
+      style={{ position: 'fixed', top: 0, left: 0, width: '100vw', height: '100vh', zIndex: -1 }}
+    />
+  );
 };
 
 export default CanvasAnimation;
